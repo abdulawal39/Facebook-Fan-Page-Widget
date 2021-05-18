@@ -3,7 +3,7 @@
 * Plugin Name: Fan Page Widget
 * Plugin URI: http://themencode.com/fan-page-widget-free-wordpress-plugin/
 * Description: An widget that will display Facebook Fan page like box. Uses new API of Facebook (v 2.3)
-* Version: 1.2
+* Version: 1.3
 * Author: ThemeNcode
 * Author URI: https://themencode.com/
 * License: GPLv2 or later
@@ -12,7 +12,7 @@
 
 // Add Scripts to header
 
-function ffpw_head(){
+function tnc_ffpw_head(){
 
 	echo '<div id="fb-root"></div>';
 
@@ -32,7 +32,7 @@ function ffpw_head(){
 
 }
 
-add_action('wp_head', 'ffpw_head');
+add_action('wp_head', 'tnc_ffpw_head');
 
 /**
  * Adds FFPW_SOCIAL widget.
@@ -237,7 +237,7 @@ function register_FFPW_SOCIAL() {
 add_action( 'widgets_init', 'register_FFPW_SOCIAL' );
 
 // Register Shortcode
-function ffpw_shortcode( $atts ) {
+function tnc_ffpw_shortcode( $atts ) {
 	extract( shortcode_atts(
 		array(
 			'page' 			=> 'https://facebook.com/ThemeNcode',
@@ -252,4 +252,4 @@ function ffpw_shortcode( $atts ) {
 	
 	return $output;
 }
-add_shortcode( 'themencode-fb-page-widget', 'ffpw_shortcode' );
+add_shortcode( 'themencode-fb-page-widget', 'tnc_ffpw_shortcode' );
