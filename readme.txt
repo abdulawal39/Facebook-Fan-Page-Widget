@@ -1,10 +1,10 @@
-=== Facebook Fan Page Widget ===
-Contributors: ThemeNcode, abdulawal39, mamb2b, sagordpi
+=== Fan Page Widget by ThemeNcode ===
+Contributors: ThemeNcode, mamb2b, abdulawal39, sagordpi
 Donate link: http://go.abdulawal.com/donate
 Tags: Facebook Like Box, New Fan Page Widget, Facebook Page Plugin, Facebook Page Like Box, Facebook Likebox, Facebook, Facebook Likebox Shortcode, Facebook Like Box Widget, Add Facebook Likebox to WordPress
 Requires at least: 3.0
-Tested up to: 4.6
-Stable tag: 1.1
+Tested up to: 5.4
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ An widget that will display Facebook Fan page like box. Uses latest API of Faceb
 
 Facebook Fan Page widget comes with an widget that you can use on any widget areas. You can set Facebook Page url, Width, Height and other options. Pretty simple to use.
 
-<strong>Best part of this plugin is you don't have to create any facebook application. Just install the plugin, put in your page url and nothing more...!</strong> 
+<strong>Best part of this plugin is you don't have to create any facebook application. Just install the plugin, put in your page url and nothing more...!</strong>
 
 Also comes with a shortcode which you can use anywhere of your wordpress site. ([themencode-fb-page-widget])
 
@@ -77,7 +77,7 @@ B. To Display with shortcode:
 No, you do not need to have any API key from facebook. as it is not mandatory to use an API key. Just put your page url and enjoy!
 
 = I have a question, would you help ? =
-Of course, Please use the support forum on wordpress.org or feel free to <a href="http://themencode.com/contact" target="_blank">contact us</a>.
+Of course, Please use the support forum on wordpress.org or feel free to <a href="https://themencode.support-hub.io/" target="_blank">contact us</a>.
 
 == Screenshots ==
 
@@ -85,6 +85,9 @@ Of course, Please use the support forum on wordpress.org or feel free to <a href
 2. Widget Settings View
 
 == Changelog === 
+
+= 1.2 =
+* Misc Improvements
 
 = 1.1 =
 * Minor improvements

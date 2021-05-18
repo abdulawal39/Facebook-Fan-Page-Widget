@@ -1,11 +1,11 @@
 <?php
 /*
-* Plugin Name: Facebook Fan Page Widget
-* Plugin URI: http://themencode.com/facebook-fan-page-widget-free-wordpress-plugin/
+* Plugin Name: Fan Page Widget
+* Plugin URI: http://themencode.com/fan-page-widget-free-wordpress-plugin/
 * Description: An widget that will display Facebook Fan page like box. Uses new API of Facebook (v 2.3)
-* Version: 1.1 
+* Version: 1.2
 * Author: ThemeNcode
-* Author URI: http://themencode.com/
+* Author URI: https://themencode.com/
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -253,4 +253,3 @@ function ffpw_shortcode( $atts ) {
 	return $output;
 }
 add_shortcode( 'themencode-fb-page-widget', 'ffpw_shortcode' );
-?>
