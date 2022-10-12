@@ -3,7 +3,7 @@ Contributors: ThemeNcode, mamb2b, abdulawal39, sagordpi
 Donate link: https://paypal.me/abdulawal39
 Tags: Facebook Like Box, New Fan Page Widget, Facebook Page Plugin, Facebook Page Like Box, Facebook Likebox, Facebook, Facebook Likebox Shortcode, Facebook Like Box Widget, Add Facebook Likebox to WordPress
 Requires at least: 4.0
-Tested up to: 5.7.2
+Tested up to: 6.0.2
 Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,7 +27,7 @@ Also comes with a shortcode which you can use anywhere of your wordpress site. (
 * Comes with [themencode-fb-page-widget], so you can use it anywhere of your site
 
 <h3>More Plugins to check :</h3>
-<a href="http://codecanyon.net/item/pdf-viewer-for-wordpress/8182815/?ref=ThemeNcode"><strong>PDF Viewer for WordPress</strong></a>
+<a href="https://themencode.com/pdf-viewer-for-wordpress/"><strong>PDF Viewer for WordPress</strong></a>
 
 Please Don't Forget to leave a review if you find this plugin useful. 
 
