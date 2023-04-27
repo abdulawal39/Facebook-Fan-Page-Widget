@@ -24,7 +24,7 @@ function tnc_ffpw_head(){
 
 	js = d.createElement(s); js.id = id;
 
-	js.src = '//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3';
+	js.src = '//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5';
 
 	fjs.parentNode.insertBefore(js, fjs);
 
@@ -108,14 +108,20 @@ class FFPW_SOCIAL extends WP_Widget {
 			 $args['before_title'] . apply_filters( 'widget_title', $instance['ffpw_fb_cover'] ). $args['after_title'];
 
 		} 
-
+		
 		if ( ! empty( $instance['ffpw_fb_posts'] ) ) {
 
 			 $args['before_title'] . apply_filters( 'widget_title', $instance['ffpw_fb_posts'] ). $args['after_title'];
 
 		}
+		
+		if ( ! empty( $instance['ffpw_fb_custom_call'] ) ) {
 
-		echo __( '<div class="fb-page" data-href="'.$instance['ffpw_fb_page'].'" data-width="'.$instance['ffpw_fb_width'].'" data-hide-cover="'.$instance['ffpw_fb_cover'].'" data-show-facepile="'.$instance['ffpw_fb_faces'].'" data-show-posts="'.$instance['ffpw_fb_posts'].'"><div class="fb-xfbml-parse-ignore"><blockquote cite="'.$instance['ffpw_fb_page'].'"><a href="'.$instance['ffpw_fb_page'].'">Facebook</a></blockquote></div></div>', 'ffpw' );
+			$args['before_title'] . apply_filters( 'widget_title', $instance['ffpw_fb_custom_call'] ). $args['after_title'];
+
+	 }
+
+		echo __( '<div class="fb-page" data-href="'.$instance['ffpw_fb_page'].'" data-width="'.$instance['ffpw_fb_width'].'" data-hide-cover="'.$instance['ffpw_fb_cover'].'" data-show-facepile="'.$instance['ffpw_fb_faces'].'" data-tabs="'.$instance['ffpw_fb_posts'].'" data-hide-cta="'.$instance['ffpw_fb_custom_call'].'"><div class="fb-xfbml-parse-ignore"><blockquote cite="'.$instance['ffpw_fb_page'].'"><a href="'.$instance['ffpw_fb_page'].'">Facebook</a></blockquote></div></div>', 'ffpw' );
 
 		echo $args['after_widget'];
 
@@ -137,6 +143,7 @@ class FFPW_SOCIAL extends WP_Widget {
 		$ffpw_fb_faces = ! empty( $instance['ffpw_fb_faces'] ) ? $instance['ffpw_fb_faces'] : __( 'true', 'ffpw' );
 		$ffpw_fb_cover = ! empty( $instance['ffpw_fb_cover'] ) ? $instance['ffpw_fb_cover'] : __( 'false', 'ffpw' );
 		$ffpw_fb_posts = ! empty( $instance['ffpw_fb_posts'] ) ? $instance['ffpw_fb_posts'] : __( 'false', 'ffpw' );
+		$ffpw_fb_custom_call = ! empty( $instance['ffpw_fb_custom_call'] ) ? $instance['ffpw_fb_custom_call'] : __( 'false', 'ffpw' );
 	?>
 
 	<p>
@@ -186,6 +193,15 @@ class FFPW_SOCIAL extends WP_Widget {
 		<label for="<?php echo $this->get_field_id( 'ffpw_fb_posts' ); ?>-false">No</label>
 	</p>
 
+	<p>
+		<?php $ffpw_custom_call_setting = esc_attr( $ffpw_fb_custom_call ); ?>
+		<label><strong><?php _e( 'Hide the custom call ?' ); ?></strong></label><br />
+		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_custom_call' ); ?>-true" name="<?php echo $this->get_field_name( 'ffpw_fb_custom_call' ); ?>" value="true" <?php if($ffpw_custom_call_setting == "true"){echo ' checked="checked" ';} else {echo '';} ?> />
+		<label for="<?php echo $this->get_field_id( 'ffpw_fb_custom_call' ); ?>-true">Yes</label>
+		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_custom_call' ); ?>-false" name="<?php echo $this->get_field_name( 'ffpw_fb_custom_call' ); ?>" value="false" <?php if($ffpw_custom_call_setting == "false"){echo ' checked="checked" ';} else {echo '';} ?> />
+		<label for="<?php echo $this->get_field_id( 'ffpw_fb_custom_call' ); ?>-false">No</label>
+	</p>
+
 	<p style="text-align: center;">
 		<strong>TRENDING: </strong><a href="http://codecanyon.net/item/pdf-viewer-for-wordpress/8182815?ref=ThemeNcode" target="_blank">PDF Viewer for WordPress [Plugin]</a>
 	</p>
@@ -221,6 +237,8 @@ class FFPW_SOCIAL extends WP_Widget {
 
 		$instance['ffpw_fb_posts'] = ( ! empty( $new_instance['ffpw_fb_posts'] ) ) ? strip_tags( $new_instance['ffpw_fb_posts'] ) : '';
 
+		$instance['ffpw_fb_custom_call'] = ( ! empty( $new_instance['ffpw_fb_custom_call'] ) ) ? strip_tags( $new_instance['ffpw_fb_custom_call'] ) : '';
+
 		return $instance;
 
 	}
@@ -248,7 +266,7 @@ function tnc_ffpw_shortcode( $atts ) {
 			'show_posts' 	=> 'false',
 		), $atts )
 	);
-	$output = '<div class="fb-page" data-href="'.$page.'" data-width="'.$width.'" data-hide-cover="'.$hide_cover.'" data-show-facepile="'.$show_faces.'" data-show-posts="'.$show_posts.'"><div class="fb-xfbml-parse-ignore"><blockquote cite="'.$page.'"><a href="'.$page.'">Facebook</a></blockquote></div></div>';
+	$output = '<div class="fb-page" data-href="'.$page.'" data-width="'.$width.'" data-hide-cover="'.$hide_cover.'" data-show-facepile="'.$show_faces.'" data-tabs="'.$show_posts.'"><div class="fb-xfbml-parse-ignore"><blockquote cite="'.$page.'"><a href="'.$page.'">Facebook</a></blockquote></div></div>';
 	
 	return $output;
 }
