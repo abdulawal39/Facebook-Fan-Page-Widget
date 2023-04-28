@@ -24,7 +24,7 @@ function tnc_ffpw_head(){
 
 	js = d.createElement(s); js.id = id;
 
-	js.src = '//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5';
+	js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0';
 
 	fjs.parentNode.insertBefore(js, fjs);
 
@@ -119,14 +119,33 @@ class FFPW_SOCIAL extends WP_Widget {
 
 			$args['before_title'] . apply_filters( 'widget_title', $instance['ffpw_fb_custom_call'] ). $args['after_title'];
 
-	 }
+	 	}
 
-		echo __( '<div class="fb-page" data-href="'.$instance['ffpw_fb_page'].'" data-width="'.$instance['ffpw_fb_width'].'" data-hide-cover="'.$instance['ffpw_fb_cover'].'" data-show-facepile="'.$instance['ffpw_fb_faces'].'" data-tabs="'.$instance['ffpw_fb_posts'].'" data-hide-cta="'.$instance['ffpw_fb_custom_call'].'"><div class="fb-xfbml-parse-ignore"><blockquote cite="'.$instance['ffpw_fb_page'].'"><a href="'.$instance['ffpw_fb_page'].'">Facebook</a></blockquote></div></div>', 'ffpw' );
+		if ( ! empty( $instance['ffpw_fb_small_header'] ) ) {
+
+			$args['before_title'] . apply_filters( 'widget_title', $instance['ffpw_fb_small_header'] ). $args['after_title'];
+
+	 	}
+
+		if ( ! empty( $instance['ffpw_fb_container_width'] ) ) {
+
+			$args['before_title'] . apply_filters( 'widget_title', $instance['ffpw_fb_container_width'] ). $args['after_title'];
+
+	 	}
+
+		if ( ! empty( $instance['ffpw_fb_lazy_loading'] ) ) {
+
+			$args['before_title'] . apply_filters( 'widget_title', $instance['ffpw_fb_lazy_loading'] ). $args['after_title'];
+
+	 	}
+
+		echo __( '<div class="fb-page" data-href="'.$instance['ffpw_fb_page'].'" data-width="'.$instance['ffpw_fb_width'].'" data-hide-cover="'.$instance['ffpw_fb_cover'].'" data-show-facepile="'.$instance['ffpw_fb_faces'].'" data-tabs="'.$instance['ffpw_fb_posts'].'" data-hide-cta="'.$instance['ffpw_fb_custom_call'].'" data-small-heade"'.$instance['ffpw_fb_small_header'].'" data-adapt-container-width="'.$instance['ffpw_fb_container_width'].'" data-lazy="'.$instance['ffpw_fb_lazy_loading'].'"><div class="fb-xfbml-parse-ignore"><blockquote cite="'.$instance['ffpw_fb_page'].'"><a href="'.$instance['ffpw_fb_page'].'">Facebook</a></blockquote></div></div>', 'ffpw' );
 
 		echo $args['after_widget'];
 
 	}
 
+	
 	/**
 	 * Back-end widget form.
 	 *
@@ -144,6 +163,9 @@ class FFPW_SOCIAL extends WP_Widget {
 		$ffpw_fb_cover = ! empty( $instance['ffpw_fb_cover'] ) ? $instance['ffpw_fb_cover'] : __( 'false', 'ffpw' );
 		$ffpw_fb_posts = ! empty( $instance['ffpw_fb_posts'] ) ? $instance['ffpw_fb_posts'] : __( 'false', 'ffpw' );
 		$ffpw_fb_custom_call = ! empty( $instance['ffpw_fb_custom_call'] ) ? $instance['ffpw_fb_custom_call'] : __( 'false', 'ffpw' );
+		$ffpw_fb_small_header = ! empty( $instance['ffpw_fb_small_header'] ) ? $instance['ffpw_fb_small_header'] : __( 'false', 'ffpw' );
+		$ffpw_fb_container_width = ! empty( $instance['ffpw_fb_container_width'] ) ? $instance['ffpw_fb_container_width'] : __( 'true', 'ffpw' );
+		$ffpw_fb_lazy_loading = ! empty( $instance['ffpw_fb_lazy_loading'] ) ? $instance['ffpw_fb_lazy_loading'] : __( 'false', 'ffpw' );
 	?>
 
 	<p>
@@ -202,6 +224,35 @@ class FFPW_SOCIAL extends WP_Widget {
 		<label for="<?php echo $this->get_field_id( 'ffpw_fb_custom_call' ); ?>-false">No</label>
 	</p>
 
+	<p>
+		<?php $ffpw_small_header_setting = esc_attr( $ffpw_fb_small_header ); ?>
+		<label><strong><?php _e( 'Use small header instead ?' ); ?></strong></label><br />
+		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_small_header' ); ?>-true" name="<?php echo $this->get_field_name( 'ffpw_fb_small_header' ); ?>" value="true" <?php if($ffpw_small_header_setting == "true"){echo ' checked="checked" ';} else {echo '';} ?> />
+		<label for="<?php echo $this->get_field_id( 'ffpw_fb_small_header' ); ?>-true">Yes</label>
+		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_small_header' ); ?>-false" name="<?php echo $this->get_field_name( 'ffpw_fb_small_header' ); ?>" value="false" <?php if($ffpw_small_header_setting == "false"){echo ' checked="checked" ';} else {echo '';} ?> />
+		<label for="<?php echo $this->get_field_id( 'ffpw_fb_small_header' ); ?>-false">No</label>
+	</p>
+
+
+	<p>
+		<?php $ffpw_container_width_setting = esc_attr( $ffpw_fb_container_width ); ?>
+		<label><strong><?php _e( 'Fit inside the container width ?' ); ?></strong></label><br />
+		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_container_width' ); ?>-true" name="<?php echo $this->get_field_name( 'ffpw_fb_container_width' ); ?>" value="true" <?php if($ffpw_container_width_setting == "true"){echo ' checked="checked" ';} else {echo '';} ?> />
+		<label for="<?php echo $this->get_field_id( 'ffpw_fb_container_width' ); ?>-true">Yes</label>
+		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_container_width' ); ?>-false" name="<?php echo $this->get_field_name( 'ffpw_fb_container_width' ); ?>" value="false" <?php if($ffpw_container_width_setting == "false"){echo ' checked="checked" ';} else {echo '';} ?> />
+		<label for="<?php echo $this->get_field_id( 'ffpw_fb_container_width' ); ?>-false">No</label>
+	</p>
+
+	<p>
+		<?php $ffpw_lazy_loading_setting = esc_attr( $ffpw_fb_lazy_loading ); ?>
+		<label><strong><?php _e( 'Lazy loading ?' ); ?></strong></label><br />
+		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_lazy_loading' ); ?>-true" name="<?php echo $this->get_field_name( 'ffpw_fb_lazy_loading' ); ?>" value="true" <?php if($ffpw_lazy_loading_setting == "true"){echo ' checked="checked" ';} else {echo '';} ?> />
+		<label for="<?php echo $this->get_field_id( 'ffpw_fb_lazy_loading' ); ?>-true">Yes</label>
+		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_lazy_loading' ); ?>-false" name="<?php echo $this->get_field_name( 'ffpw_fb_lazy_loading' ); ?>" value="false" <?php if($ffpw_lazy_loading_setting == "false"){echo ' checked="checked" ';} else {echo '';} ?> />
+		<label for="<?php echo $this->get_field_id( 'ffpw_fb_lazy_loading' ); ?>-false">No</label>
+	</p>
+	
+
 	<p style="text-align: center;">
 		<strong>TRENDING: </strong><a href="http://codecanyon.net/item/pdf-viewer-for-wordpress/8182815?ref=ThemeNcode" target="_blank">PDF Viewer for WordPress [Plugin]</a>
 	</p>
@@ -238,6 +289,12 @@ class FFPW_SOCIAL extends WP_Widget {
 		$instance['ffpw_fb_posts'] = ( ! empty( $new_instance['ffpw_fb_posts'] ) ) ? strip_tags( $new_instance['ffpw_fb_posts'] ) : '';
 
 		$instance['ffpw_fb_custom_call'] = ( ! empty( $new_instance['ffpw_fb_custom_call'] ) ) ? strip_tags( $new_instance['ffpw_fb_custom_call'] ) : '';
+
+		$instance['ffpw_fb_small_header'] = ( ! empty( $new_instance['ffpw_fb_small_header'] ) ) ? strip_tags( $new_instance['ffpw_fb_small_header'] ) : '';
+
+		$instance['ffpw_fb_container_width'] = ( ! empty( $new_instance['ffpw_fb_container_width'] ) ) ? strip_tags( $new_instance['ffpw_fb_container_width'] ) : '';
+
+		$instance['ffpw_fb_lazy_loading'] = ( ! empty( $new_instance['ffpw_fb_lazy_loading'] ) ) ? strip_tags( $new_instance['ffpw_fb_lazy_loading'] ) : '';
 
 		return $instance;
 
