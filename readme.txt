@@ -80,8 +80,9 @@ Of course, Please use the support forum on wordpress.org or feel free to <a href
 
 == Screenshots ==
 
-1. Front View
-2. Widget Settings View
+1. Timeline Tab View
+2. Messages Tab View
+3. Widget Settings View
 
 == Changelog === 
 = 2.0 =
