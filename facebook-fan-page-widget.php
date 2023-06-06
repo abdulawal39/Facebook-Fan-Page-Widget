@@ -139,7 +139,14 @@ class FFPW_SOCIAL extends WP_Widget {
 
 	 	}
 
-		echo __( '<div class="fb-page" data-href="'.$instance['ffpw_fb_page'].'" data-width="'.$instance['ffpw_fb_width'].'" data-hide-cover="'.$instance['ffpw_fb_cover'].'" data-show-facepile="'.$instance['ffpw_fb_faces'].'" data-tabs="'.$instance['ffpw_fb_tabs'].'" data-hide-cta="'.$instance['ffpw_fb_custom_call'].'" data-small-heade"'.$instance['ffpw_fb_small_header'].'" data-adapt-container-width="'.$instance['ffpw_fb_container_width'].'" data-lazy="'.$instance['ffpw_fb_lazy_loading'].'"><div class="fb-xfbml-parse-ignore"><blockquote cite="'.$instance['ffpw_fb_page'].'"><a href="'.$instance['ffpw_fb_page'].'">Facebook</a></blockquote></div></div>', 'ffpw' );
+		if( is_array( $instance['ffpw_fb_tabs'] )){
+			$tabs_to_show = implode( ",", $instance['ffpw_fb_tabs'] );
+		} else {
+			$tabs_to_show = $instance['ffpw_fb_tabs'];
+		}
+		
+
+		echo __( '<div class="fb-page" data-href="'.$instance['ffpw_fb_page'].'" data-width="'.$instance['ffpw_fb_width'].'" data-hide-cover="'.$instance['ffpw_fb_cover'].'" data-show-facepile="'.$instance['ffpw_fb_faces'].'" data-tabs="'.$tabs_to_show.'" data-hide-cta="'.$instance['ffpw_fb_custom_call'].'" data-small-header="'.$instance['ffpw_fb_small_header'].'" data-adapt-container-width="'.$instance['ffpw_fb_container_width'].'" data-lazy="'.$instance['ffpw_fb_lazy_loading'].'"><div class="fb-xfbml-parse-ignore"><blockquote cite="'.$instance['ffpw_fb_page'].'"><a href="'.$instance['ffpw_fb_page'].'">Facebook</a></blockquote></div></div>', 'ffpw' );
 
 		echo $args['after_widget'];
 
@@ -161,7 +168,7 @@ class FFPW_SOCIAL extends WP_Widget {
 		$ffpw_fb_height = ! empty( $instance['ffpw_fb_height'] ) ? $instance['ffpw_fb_height'] : __( '500', 'ffpw' );
 		$ffpw_fb_faces = ! empty( $instance['ffpw_fb_faces'] ) ? $instance['ffpw_fb_faces'] : __( 'true', 'ffpw' );
 		$ffpw_fb_cover = ! empty( $instance['ffpw_fb_cover'] ) ? $instance['ffpw_fb_cover'] : __( 'false', 'ffpw' );
-		$ffpw_fb_tabs = ! empty( $instance['ffpw_fb_tabs'] ) ? $instance['ffpw_fb_tabs'] : __( 'events', 'ffpw' );
+		$ffpw_fb_tabs = ! empty( $instance['ffpw_fb_tabs'] ) ? $instance['ffpw_fb_tabs'] : __( 'timeline', 'ffpw' );
 		$ffpw_fb_custom_call = ! empty( $instance['ffpw_fb_custom_call'] ) ? $instance['ffpw_fb_custom_call'] : __( 'false', 'ffpw' );
 		$ffpw_fb_small_header = ! empty( $instance['ffpw_fb_small_header'] ) ? $instance['ffpw_fb_small_header'] : __( 'false', 'ffpw' );
 		$ffpw_fb_container_width = ! empty( $instance['ffpw_fb_container_width'] ) ? $instance['ffpw_fb_container_width'] : __( 'true', 'ffpw' );
@@ -190,7 +197,7 @@ class FFPW_SOCIAL extends WP_Widget {
 
 	<p>
 		<?php $ffpw_faces_setting = esc_attr( $ffpw_fb_faces ); ?>
-		<label><strong><?php _e( 'Show Friends Faces ?' ); ?></strong></label><br />
+		<label><strong><?php _e( 'Show Friends Faces?' ); ?></strong></label><br />
 		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_faces' ); ?>-true" name="<?php echo $this->get_field_name( 'ffpw_fb_faces' ); ?>" value="true" <?php if($ffpw_faces_setting == "true"){echo ' checked="checked" ';} else {echo '';} ?>/>
 		<label for="<?php echo $this->get_field_id( 'ffpw_fb_faces' ); ?>-true">Yes</label>
 		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_faces' ); ?>-false" name="<?php echo $this->get_field_name( 'ffpw_fb_faces' ); ?>" value="false" <?php if($ffpw_faces_setting == "false"){echo ' checked="checked" ';} else {echo '';} ?> />
@@ -199,7 +206,7 @@ class FFPW_SOCIAL extends WP_Widget {
 
 	<p>
 		<?php $ffpw_cover_setting = esc_attr( $ffpw_fb_cover ); ?>
-		<label><strong><?php _e( 'Hide Cover ?' ); ?></strong></label><br />
+		<label><strong><?php _e( 'Hide Cover?' ); ?></strong></label><br />
 		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_cover' ); ?>-true" name="<?php echo $this->get_field_name( 'ffpw_fb_cover' ); ?>" value="true" <?php if($ffpw_cover_setting == "true"){echo ' checked="checked" ';} else {echo '';} ?> />
 		<label for="<?php echo $this->get_field_id( 'ffpw_fb_cover' ); ?>-true">Yes</label>
 		<input type="radio" id="<?php echo $this->get_field_id( 'ffpw_fb_cover' ); ?>-false" name="<?php echo $this->get_field_name( 'ffpw_fb_cover' ); ?>" value="false" <?php if($ffpw_cover_setting == "false"){echo ' checked="checked" ';} else {echo '';} ?> />
@@ -208,12 +215,13 @@ class FFPW_SOCIAL extends WP_Widget {
 
 	<p>
 		<?php $ffpw_tabs_setting = esc_attr( $ffpw_fb_tabs ); ?>
-		<label><strong><?php _e( 'Show Tabs:' ); ?></strong></label><br />
-		<select name="<?php echo $this->get_field_name( 'ffpw_fb_tabs' ); ?>" id="<?php echo $this->get_field_id( 'ffpw_fb_tabs' ); ?>">
-			<option value="events" <?php if($ffpw_tabs_setting == "events"){echo ' selected="selected" ';} else {echo '';} ?> >Events</option>
-			<option value="timeline" <?php if($ffpw_tabs_setting == "timeline"){echo ' selected="selected" ';} else {echo '';} ?> >Timeline</option>
-			<option value="messages" <?php if($ffpw_tabs_setting == "messages"){echo ' selected="selected" ';} else {echo '';} ?> >Messages</option>
-		</select>
+		<label><strong><?php _e( 'Tabs to Display' ); ?></strong></label><br />
+		<?php $get_tabs = esc_attr( $ffpw_fb_tabs );
+		if( empty( $get_tabs ) ){
+			$get_tabs = esc_attr( 'timeline,messages,events' );
+		} ?>
+		<input class="widefat" id="<?php echo $this->get_field_id( 'ffpw_fb_tabs' ); ?>" name="<?php echo $this->get_field_name( 'ffpw_fb_tabs' ); ?>" type="text" value="<?php echo esc_attr( $ffpw_fb_tabs ); ?>">
+		<small><?php echo esc_html__( 'accepted values: timeline, events, messages', 'facebook-fan-page-widget' ); ?></small>
 	</p>
 
 	<p>
@@ -322,9 +330,16 @@ function tnc_ffpw_shortcode( $atts ) {
 			'hide_cover' 	=> 'false',
 			'show_faces' 	=> 'true',
 			'show_posts' 	=> 'false',
+			'tabs'			=> 'timeline',
+			'lazy'			=> 'true',
+			'fit_width' 	=> 'false',
+			'small_header'  => 'false',
 		), $atts )
 	);
-	$output = '<div class="fb-page" data-href="'.$page.'" data-width="'.$width.'" data-hide-cover="'.$hide_cover.'" data-show-facepile="'.$show_faces.'" data-tabs="'.$show_posts.'"><div class="fb-xfbml-parse-ignore"><blockquote cite="'.$page.'"><a href="'.$page.'">Facebook</a></blockquote></div></div>';
+
+	$show_tabs = implode( ",", $tabs );
+
+	$output = '<div class="fb-page" data-href="'.$page.'" data-width="'.$width.'" data-height="'.$height.'" data-hide-cover="'.$hide_cover.'" data-show-facepile="'.$show_faces.'" data-tabs="'.$show_tabs.'" data-adapt-container-width="' . $fit_width . '" data-small-header="' . $small_header . '" data-lazy="' . $lazy . '" ><div class="fb-xfbml-parse-ignore"><blockquote cite="'.$page.'"><a href="'.$page.'">Facebook</a></blockquote></div></div>';
 	
 	return $output;
 }
