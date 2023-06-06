@@ -17,7 +17,7 @@ Facebook Fan Page widget comes with an widget that you can use on any widget are
 
 Also comes with a shortcode which you can use anywhere of your wordpress site. ([themencode-fb-page-widget])
 
-<a href="http://l.themencode.com/ffpwvideo"> Video Overview</a> | <a href="http://l.themencode.com/ffpwsc"> Shortcode Generator</a> | <a href="http://l.themencode.com/ffpwdemo">Live Demo</a> 
+<a href="https://l.themencode.com/ffpwvideo"> Video Overview</a> | <a href="https://l.themencode.com/ffpwsc"> Shortcode Generator</a> | <a href="https://l.themencode.com/ffpwdemo">Live Demo</a> 
 
 <h3>Features :</h3>
 * Very Easy to use
@@ -26,7 +26,9 @@ Also comes with a shortcode which you can use anywhere of your wordpress site. (
 * Comes with [themencode-fb-page-widget], so you can use it anywhere of your site
 
 <h3>More Plugins to check :</h3>
-<a href="https://themencode.com/pdf-viewer-for-wordpress/"><strong>PDF Viewer for WordPress</strong></a>
+<a href="https://codecanyon.net/item/pdf-viewer-for-wordpress/8182815/"><strong>TNC FlipBook - PDF Viewer for WordPress</strong></a>
+<a href="https://codecanyon.net/item/wp-file-access-manager/26430349/"><strong>WP File Access Manager</strong></a>
+<a href="https://portal.themencode.com/downloads/tnc-bookshelf-pro/"><strong>TNC BookShelf Pro</strong></a>
 
 Please Don't Forget to leave a review if you find this plugin useful. 
 
