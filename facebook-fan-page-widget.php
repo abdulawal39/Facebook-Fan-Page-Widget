@@ -1,9 +1,9 @@
 <?php
 /*
 * Plugin Name: Fan Page Widget
-* Plugin URI: http://themencode.com/fan-page-widget-free-wordpress-plugin/
+* Plugin URI: https://portal.themencode.com/downloads/fan-page-widget-by-themencode/
 * Description: An widget that will display Facebook Fan page like box. Uses new API of Facebook (v 2.3)
-* Version: 1.3
+* Version: 2.0
 * Author: ThemeNcode
 * Author URI: https://themencode.com/
 * License: GPLv2 or later
@@ -221,7 +221,7 @@ class FFPW_SOCIAL extends WP_Widget {
 			$get_tabs = esc_attr( 'timeline,messages,events' );
 		} ?>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'ffpw_fb_tabs' ); ?>" name="<?php echo $this->get_field_name( 'ffpw_fb_tabs' ); ?>" type="text" value="<?php echo esc_attr( $ffpw_fb_tabs ); ?>">
-		<small><?php echo esc_html__( 'accepted values: timeline, events, messages', 'facebook-fan-page-widget' ); ?></small>
+		<small><?php echo esc_html__( 'accepted values: timeline, events, messages', 'ffpw' ); ?></small>
 	</p>
 
 	<p>
