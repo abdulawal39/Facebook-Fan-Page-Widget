@@ -146,7 +146,7 @@ class FFPW_SOCIAL extends WP_Widget {
 		}
 		
 
-		echo __( '<div class="fb-page" data-href="'.$instance['ffpw_fb_page'].'" data-width="'.$instance['ffpw_fb_width'].'" data-hide-cover="'.$instance['ffpw_fb_cover'].'" data-show-facepile="'.$instance['ffpw_fb_faces'].'" data-tabs="'.$tabs_to_show.'" data-hide-cta="'.$instance['ffpw_fb_custom_call'].'" data-small-header="'.$instance['ffpw_fb_small_header'].'" data-adapt-container-width="'.$instance['ffpw_fb_container_width'].'" data-lazy="'.$instance['ffpw_fb_lazy_loading'].'"><div class="fb-xfbml-parse-ignore"><blockquote cite="'.$instance['ffpw_fb_page'].'"><a href="'.$instance['ffpw_fb_page'].'">Facebook</a></blockquote></div></div>', 'ffpw' );
+		echo __( '<div class="fb-page" data-href="'. esc_url( $instance['ffpw_fb_page'] ).'" data-width="'. esc_attr( $instance['ffpw_fb_width'] ).'" data-hide-cover="'. esc_attr( $instance['ffpw_fb_cover'] ) .'" data-show-facepile="'. esc_attr( $instance['ffpw_fb_faces'] ) .'" data-tabs="'. esc_attr( $tabs_to_show ).'" data-hide-cta="'. esc_attr( $instance['ffpw_fb_custom_call'] ).'" data-small-header="'. esc_attr( $instance['ffpw_fb_small_header'] ) .'" data-adapt-container-width="'. esc_attr( $instance['ffpw_fb_container_width'] ).'" data-lazy="'. esc_attr( $instance['ffpw_fb_lazy_loading'] ).'"><div class="fb-xfbml-parse-ignore"><blockquote cite="'. esc_attr( $instance['ffpw_fb_page'] ).'"><a href="'. esc_url( $instance['ffpw_fb_page'] ).'">Facebook</a></blockquote></div></div>', 'ffpw' );
 
 		echo $args['after_widget'];
 
