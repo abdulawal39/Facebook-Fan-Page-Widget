@@ -3,7 +3,7 @@
 * Plugin Name: Fan Page Widget
 * Plugin URI: https://portal.themencode.com/downloads/fan-page-widget-by-themencode/
 * Description: An widget that will display Facebook Fan page like box. Uses new API of Facebook (v 2.3)
-* Version: 2.0
+* Version: 2.1
 * Author: ThemeNcode
 * Author URI: https://themencode.com/
 * License: GPLv2 or later
